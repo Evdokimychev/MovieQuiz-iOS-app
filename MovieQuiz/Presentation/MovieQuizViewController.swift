@@ -4,6 +4,10 @@ final class MovieQuizViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let firstQuestion = self.questions[self.currentQuestionIndex]
+        let viewModel = self.convert(model: firstQuestion)
+        self.show(quiz: viewModel)
     }
     
     @IBOutlet private var imageView: UIImageView!
@@ -190,8 +194,8 @@ final class MovieQuizViewController: UIViewController {
             // в замыкании пишем, что должно происходить при нажатии на кнопку
             // константа с кнопкой для системного алерта
             let action = UIAlertAction(title: "Сыграть ещё раз", style: .default) { _ in
-                // код, который сбрасывает игру и показывает первый вопрос
                 
+                // код, который сбрасывает игру и показывает первый вопрос
                 self.currentQuestionIndex = 0
                 // сбрасываем переменную с количеством правильных ответов
                 self.correctAnswers = 0
